@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/notes") //By default fetch will do the get request
+        const response = await fetch("https://notes-server-y9yv.onrender.com/api/notes") //By default fetch will do the get request
         const notes = await response.json();
         setNotes(notes);
       } catch (e) {
@@ -31,7 +31,7 @@ function App() {
     setSelectedNote(note);
     setTitle(note.title);
     setContent(note.content);
-    setShowCard(true);
+    setShowCard(false);
   }
 
   const handleAddNote = async (e) => {
@@ -39,7 +39,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/notes",
+        "https://notes-server-y9yv.onrender.com/api/notes",
         {
           method: "POST",
           headers: {
@@ -68,7 +68,7 @@ function App() {
     e.stopPropagation();
     try {
       await fetch(
-        `http://localhost:5000/api/notes/${noteId}`,
+        `https://notes-server-y9yv.onrender.com/api/notes/${noteId}`,
         {
           method: "DELETE",
         }
@@ -92,7 +92,7 @@ function App() {
     console.log("content : ", content);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/notes/${selectedNote.id}`,
+      const response = await fetch(`https://notes-server-y9yv.onrender.com/api/notes/${selectedNote.id}`,
         {
           method: 'PUT',
           headers: {
