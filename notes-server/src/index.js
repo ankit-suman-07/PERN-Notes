@@ -1,9 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
+require('dotenv').config(); // Dotenv for loading environment variables from a .env file
 
 const app = express();
 const prisma = new PrismaClient();
+
+const PORT = process.env.PORT || 5000; // Server port, defaults to 5000 if not specified in environment variables
 
 app.use(express.json());
 app.use(cors());
@@ -81,7 +84,7 @@ app.delete("/api/notes/:id", async (req, res) => {
     }
 })
 
-app.listen(5000, () => {
-    console.log("Server running on PORT:5000");
+app.listen(PORT, () => {
+    console.log("Server running on PORT :", PORT);
     console.log("Here hear");
 })
