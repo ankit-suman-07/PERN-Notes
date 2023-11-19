@@ -16,10 +16,28 @@ app.get("/api/notes", async (req, res) => {
     res.json(notes);
 })
 
-app.post("/api/notes", async (req, res) => {
-    const { title, content } = req.body;
+// Retrieve details of specific email IDs
+// Modify your /api/notes/:email endpoint
+app.get("/api/notes/:email", async (req, res) => {
+    const { email } = req.params; // Get the email from the route parameters
 
-    if (!title || !content) {
+    try {
+        // Fetch notes based on the provided email
+        const notes = await prisma.note.findMany({
+            where: { email: email },
+        });
+
+        res.json(notes);
+    } catch (error) {
+        res.status(500).send("Oops something went wrong!!!");
+    }
+});
+
+
+app.post("/api/notes", async (req, res) => {
+    const { title, content, email } = req.body;
+
+    if (!email || !title || !content) {
         return res
             .status(400)
             .send("Title and Content fields required");
@@ -27,7 +45,7 @@ app.post("/api/notes", async (req, res) => {
 
     try {
         const note = await prisma.note.create({
-            data: { title, content }
+            data: { title, content, email }
         })
         res.json(note).send();
     } catch (error) {
@@ -36,7 +54,7 @@ app.post("/api/notes", async (req, res) => {
 })
 
 app.put("/api/notes/:id", async (req, res) => {
-    const { title, content } = req.body;
+    const { title, content, email } = req.body;
     const id = parseInt(req.params.id)
 
     if (!id || isNaN(id)) {
@@ -45,7 +63,7 @@ app.put("/api/notes/:id", async (req, res) => {
             .send("ID must be a valid number.");
     }
 
-    if (!title || !content) {
+    if (!email || !title || !content) {
         return res
             .status(400)
             .send("Title and Content fields required");
@@ -54,7 +72,7 @@ app.put("/api/notes/:id", async (req, res) => {
     try {
         const updatedNote = await prisma.note.update({
             where: { id },
-            data: { title, content }
+            data: { email, title, content }
         })
         res.json(updatedNote);
     } catch (error) {
