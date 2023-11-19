@@ -14,9 +14,10 @@ function Home() {
     const [showCard, setShowCard] = useState(false);
 
     useEffect(() => {
+        const mail_id = "email.com";
         const fetchNotes = async () => {
             try {
-                const response = await fetch("https://notes-server-y9yv.onrender.com/api/notes") //By default fetch will do the get request
+                const response = await fetch(`https://notes-server-y9yv.onrender.com/api/notes/${mail_id}`) //By default fetch will do the get request
                 const notes = await response.json();
                 setNotes(notes);
             } catch (e) {
