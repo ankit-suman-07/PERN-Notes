@@ -1,0 +1,52 @@
+.navbar-div {
+    border: 2px solid #ffff;
+    background-color: #000123;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    margin-left: 15px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffff;
+}
+
+.user-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-text {
+    color: #ffff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.user-text span {
+    font-size: 14px;
+}
+
+.user-div button {
+    height: 30px;
+    margin: 0 10px 0 10px;
+    border: 2px solid #ffff;
+    background-color: #B50702;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #ffff;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.user-div button:hover {
+    cursor: pointer;
+    background-color: #ffff;
+    color: #000123;
+}

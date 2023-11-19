@@ -1,8 +1,12 @@
 import './Home.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { AuthContext, AuthDetails } from '../use-context/AuthDetails';
+
+import Navbar from '../navbar/Navbar';
 
 import DeleteIcon from "../assets/delete.png";
 import AddIcon from "../assets/add.png";
+import { useNavigate } from 'react-router-dom';
 
 
 function Home() {
@@ -13,11 +17,21 @@ function Home() {
     const [selectedNote, setSelectedNote] = useState(null);
     const [showCard, setShowCard] = useState(false);
 
+    const { loggedIn, userName, userEmail, userPhoto, userSignOut } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+
     useEffect(() => {
-        const mail_id = "email.com";
+        if (!loggedIn) {
+            navigate('/login');
+        }
+        console.log("Home page : logged -> ", loggedIn)
+
+        console.log("Login page : logged -> ", loggedIn)
         const fetchNotes = async () => {
             try {
-                const response = await fetch(`https://notes-server-y9yv.onrender.com/api/notes/${mail_id}`) //By default fetch will do the get request
+                const response = await fetch(`https://notes-server-y9yv.onrender.com/api/notes/${userEmail}`) //By default fetch will do the get request
                 const notes = await response.json();
                 setNotes(notes);
             } catch (e) {
@@ -26,7 +40,7 @@ function Home() {
         };
 
         fetchNotes();
-    }, [])
+    }, [loggedIn])
 
     const handleNoteClick = (note) => {
         setSelectedNote(note);
@@ -140,6 +154,10 @@ function Home() {
 
 
     return (
+        <>
+            <Navbar userSignOut={userSignOut} userName={userName} />
+            {/* <button onClick={userSignOut} >Sign Out</button>
+            <span>{userName}</span> */}
         <div className="home-div">
             <div className='form-div' id={showCard ? "show-form" : "hide-form"} >
                 <div className='form-text' >
@@ -182,12 +200,18 @@ function Home() {
             </div>
             <div className='notes-outer' >
 
-                <div className='notes-text' >
+                    {/* <div className='notes-text' >
                     NOTES
-                </div>
+                </div> */}
                 <div className='notes-inner'>
-                    {
-                        notes.map((note, idx) => {
+                        {
+                            notes.length === 0
+                                ? <div className='empty-card' >
+                                    <p>You have no notes right now.
+                                        Create some notes to display here.</p>
+                                </div>
+
+                                : notes.map((note, idx) => {
                             return (
                                 <div
                                     className='notes-card'
@@ -219,7 +243,8 @@ function Home() {
                     <img src={AddIcon} alt='add-btn' />
                 </button>
             </div>
-        </div>
+            </div>
+        </>
     );
 }
 
