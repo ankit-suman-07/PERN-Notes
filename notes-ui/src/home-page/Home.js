@@ -61,7 +61,7 @@ function Home() {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        email: "demo email.com",
+                        email: userEmail,
                         title,
                         content
                     }),
@@ -115,7 +115,7 @@ function Home() {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        email: "demo email.com",
+                        email: userEmail,
                         title,
                         content
                     })
