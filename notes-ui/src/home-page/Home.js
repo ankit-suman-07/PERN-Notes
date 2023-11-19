@@ -1,6 +1,6 @@
 import './Home.css';
 import { useEffect, useState, useContext } from 'react';
-import { AuthContext, AuthDetails } from '../use-context/AuthDetails';
+import { AuthContext } from '../use-context/AuthDetails';
 
 import Navbar from '../navbar/Navbar';
 
@@ -17,7 +17,7 @@ function Home() {
     const [selectedNote, setSelectedNote] = useState(null);
     const [showCard, setShowCard] = useState(false);
 
-    const { loggedIn, userName, userEmail, userPhoto, userSignOut } = useContext(AuthContext);
+    const { loggedIn, userName, userEmail, userSignOut } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ function Home() {
         };
 
         fetchNotes();
-    }, [loggedIn])
+    }, [loggedIn, navigate, userEmail])
 
     const handleNoteClick = (note) => {
         setSelectedNote(note);

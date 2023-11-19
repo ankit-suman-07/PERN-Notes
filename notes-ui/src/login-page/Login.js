@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, googleAuth } from "../firebase/Firebase";
 import { signInWithPopup } from 'firebase/auth';
-import { AuthDetails, AuthContext } from '../use-context/AuthDetails';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { useHistory, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../use-context/AuthDetails';
+import { useNavigate } from 'react-router-dom';
 
 import "./Login.css";
 
@@ -13,7 +11,7 @@ import BackGround from "../assets/bg.jpeg";
 
 const Login = () => {
     const [newUser, setNewUser] = useState();
-    const { setAuthUser, setLoggedIn, setUserName, setUserEmail, setUserPhoto, loggedIn } = useContext(AuthContext);
+    const { setAuthUser, setLoggedIn, setUserName, setUserEmail, setUserPhoto } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -31,7 +29,6 @@ const Login = () => {
     };
 
     useEffect(() => {
-        console.log("User : -> : ", newUser);
         if (newUser) {
             // Update state
             setAuthUser(newUser);
@@ -41,16 +38,15 @@ const Login = () => {
             setLoggedIn(true);
             navigate('/');
         }
-        console.log("User : -> : ", newUser);
-    }, [newUser]);
+    }, [newUser, navigate, setAuthUser, setLoggedIn, setUserEmail, setUserPhoto, setUserName]);
 
 
     return (
         <div className='login-div' >
-            <img src={BackGround} alt='back-photo' className='back-img' />
+            <img src={BackGround} alt='background' className='back-img' />
             <div className='login-box' >
                 <button onClick={googleSignUp}  >
-                    <img src={GoogleIcon} />
+                    <img src={GoogleIcon} alt='google icon' />
                     <span>SignIn with Google</span>
                 </button>
             </div>
