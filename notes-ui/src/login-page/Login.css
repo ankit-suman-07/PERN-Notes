@@ -1,0 +1,51 @@
+.login-div {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login-box {
+    border: 2px solid #ffff;
+    background-color: #282c34;
+    width: 300px;
+    height: 200px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box button {
+    height: 50px;
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffff;
+    border: 2px solid #ffff;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.login-box button:hover {
+    cursor: pointer;
+    background-color: #282c34;
+    color: #ffff;
+}
+
+.login-box button img {
+    height: 50%;
+    margin-right: 10px;
+}
+
+.login-box button span {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}

@@ -100,6 +100,7 @@ function Home() {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
+                        email: "demo email.com",
                         title,
                         content
                     })
