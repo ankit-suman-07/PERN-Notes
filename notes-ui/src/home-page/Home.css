@@ -1,0 +1,245 @@
+.home-div {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    min-height: 100vh;
+}
+
+.form-div {
+    /* background-color: #b1c2d9; */
+    background-color: #7a7a79;
+    border-right: 2px solid #222222;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.form-text {
+    margin: 5px;
+    height: 40px;
+    color: #ffff;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notes-text {
+    margin: 5px;
+    height: 60px;
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input {
+    border: 2px solid #ffff;
+    /* background-color: #ed9864; */
+    min-height: 25px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+form textarea {
+    border: 2px solid #ffff;
+    background-color: #efd480;
+    margin-top: 5px;
+}
+
+.edit-btn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+
+.add-btn,
+.edit-btn button {
+    border: 2px solid #ffff;
+    margin-top: 5px;
+    height: 30px;
+    color: #ffff;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.add-btn:hover,
+.save-btn:hover,
+.cancel-btn:hover {
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    background-color: #ffff;
+}
+
+
+.add-btn {
+    background-color: #77b9b4;
+    transition: all 0.3s;
+}
+
+.add-btn:hover,
+.save-btn:hover {
+    color: #77b9b4;
+}
+
+.cancel-btn:hover {
+    color: #d45757;
+}
+
+.save-btn {
+    background-color: #77b9b4;
+    transition: all 0.3s;
+}
+
+.cancel-btn {
+    background-color: #d45757;
+    transition: all 0.3s;
+}
+
+.notes-outer {
+    /* background-color: #b1c2d9; */
+    background-color: #faeee0;
+}
+
+.notes-inner {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.notes-card {
+    border: 1px solid #222222;
+    background-color: #ffff;
+    min-height: 250px;
+    transition: all 0.3s;
+}
+
+.notes-card:hover {
+    cursor: pointer;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.note-top {
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+}
+
+.note-top button {
+    background-color: #ffff;
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+.note-top button img {
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.note-top button img:hover {
+    transform: scale(120%);
+    cursor: pointer;
+}
+
+.note-title {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.note-content {
+    margin: 5px;
+}
+
+.bottom-box {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bottom-add-btn {
+    width: 70px;
+    height: 70px;
+    background: none;
+    border: none;
+    display: none;
+}
+
+.bottom-add-btn img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .home-div {
+        grid-template-columns: 1fr 4fr;
+    }
+
+    .notes-inner {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .home-div {
+        grid-template-columns: 1.5fr 4fr;
+    }
+
+    .notes-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .home-div {
+        grid-template-columns: 1fr;
+    }
+
+    .notes-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .bottom-add-btn {
+        display: block;
+    }
+
+    .form-div {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+
+    form {
+        margin: 0 50px 10px 50px
+    }
+
+    .notes-outer {
+        width: 100%;
+    }
+
+
+    #hide-form {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .notes-inner {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,5 +1,9 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Home from './home-page/Home';
+import Login from './login-page/Login';
 
 import DeleteIcon from "./assets/delete.png";
 import AddIcon from "./assets/add.png";
@@ -137,8 +141,14 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div className='form-div' id={showCard ? "show-form" : "hide-form"} >
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+      {/* <div className='form-div' id={showCard ? "show-form" : "hide-form"} >
         <div className='form-text' >
           Create New Note
         </div>
@@ -215,7 +225,7 @@ function App() {
         <button className='bottom-add-btn' onClick={handleBottomClick} >
           <img src={AddIcon} alt='add-btn' />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
