@@ -1,7 +1,7 @@
 .home-div {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    min-height: 100vh;
+    min-height: calc(100dvh - 70px);
 }
 
 .form-div {
@@ -63,6 +63,7 @@ form input {
 form textarea {
     border: 2px solid #ffff;
     background-color: #efd480;
+    /* background-color: #d45757; */
     margin-top: 5px;
 }
 
