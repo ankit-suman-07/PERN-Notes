@@ -57,11 +57,17 @@ const Login = () => {
     return (
         <div className='login-div' >
             <img src={BackGround} alt='background' className='back-img' />
+            <div className='login-logo' >
+                NOTES.
+            </div>
             <div className='login-box' >
                 <button onClick={googleSignUp}  >
                     <img src={GoogleIcon} alt='google icon' />
                     <span>SignIn with Google</span>
                 </button>
+            </div>
+            <div className='login-bottom' >
+                Made by: ankitsuman07@gmail.com
             </div>
         </div>
     )
