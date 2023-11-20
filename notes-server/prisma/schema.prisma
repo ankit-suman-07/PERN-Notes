@@ -1,19 +1,22 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
+// This section defines the generator for the Prisma client.
+// The Prisma client is used for database operations in your application.
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client-js" // Specifies the Prisma client provider as "prisma-client-js"
 }
 
+// This section defines the data source for Prisma, which connects to a PostgreSQL database.
+// The database URL is retrieved from the environment variables using env("DATABASE_URL").
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "postgresql" // Specifies the database provider as PostgreSQL
+  url      = env("DATABASE_URL") // Retrieves the database URL from the environment variables
 }
 
-
+// This section defines the data model for the "Note" table in the database.
+// It includes fields such as "id" (auto-incremented integer), "email" (string),
+// "title" (string), and "content" (string).
 model Note {
-  id      Int     @id @default(autoincrement())
-  email   String
-  title   String
-  content String
+  id      Int     @id @default(autoincrement()) // Specifies the "id" field as the primary key with auto-increment
+  email   String  // Specifies the "email" field as a string
+  title   String  // Specifies the "title" field as a string
+  content String  // Specifies the "content" field as a string
 }
