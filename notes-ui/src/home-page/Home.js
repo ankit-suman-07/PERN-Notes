@@ -46,7 +46,7 @@ function Home() {
         setSelectedNote(note);
         setTitle(note.title);
         setContent(note.content);
-        setShowCard(false);
+        setShowCard(true);
     }
 
     const handleAddNote = async (e) => {
