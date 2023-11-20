@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth, googleAuth } from "../firebase/Firebase";
 import { signInWithPopup } from 'firebase/auth';
 import { AuthContext } from '../use-context/AuthDetails';
@@ -11,7 +12,7 @@ import BackGround from "../assets/bg.jpeg";
 
 const Login = () => {
     const [newUser, setNewUser] = useState();
-    const { setAuthUser, setLoggedIn, setUserName, setUserEmail, setUserPhoto } = useContext(AuthContext);
+    const { setAuthUser, setLoggedIn, setUserName, setUserEmail, setUserPhoto, loggedIn } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -27,6 +28,18 @@ const Login = () => {
             console.error("Error signing in with Google:", error);
         }
     };
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setNewUser(user);
+
+        });
+
+        // Cleanup the subscription when the component unmounts
+        return () => {
+            unsubscribe();
+        };
+    }, [loggedIn]);
 
     useEffect(() => {
         if (newUser) {

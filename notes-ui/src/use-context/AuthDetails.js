@@ -15,11 +15,10 @@ export const AuthDetails = ({ children }) => {
     // useEffect(() => {
     //     const unsubscribe = onAuthStateChanged(auth, (user) => {
     //         if (user && loggedIn) {
-    //         // Update state
+    //             // Update state
     //             setAuthUser(user);
-    //             setUserName(user.displayName.displayName || "");
+    //             setUserName(user.displayName || "");
     //             setUserEmail(user.email || "");
-    //             setUserPhoto(user.photoURL || "");
     //             setLoggedIn(true);
     //         }
     //     });
