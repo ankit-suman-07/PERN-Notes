@@ -29,7 +29,7 @@ Table of Contents
 
 ### Deployed Link
 
-[GameIt](https://mern-notes-nine.vercel.app/)
+[Motes.](https://mern-notes-nine.vercel.app/)
 
 ## Technologies Used
 
